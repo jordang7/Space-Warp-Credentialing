@@ -10,6 +10,14 @@ contract SPCredentials is ERC721, ERC721URIStorage, Pausable, Ownable {
 
     Counters.Counter private _tokenIdCounter;
 
+    struct credentialERC721NFT {
+        address owner;
+        string tokenURI;
+        uint256 tokenId;
+    }
+
+    credentialERC721NFT[] public nftCollection;
+
     constructor() ERC721("SPCredentials", "SPC") {}
 
     function pause() public onlyOwner {
@@ -22,9 +30,18 @@ contract SPCredentials is ERC721, ERC721URIStorage, Pausable, Ownable {
 
     function safeMint(address to, string memory uri) public onlyOwner {
         uint256 tokenId = _tokenIdCounter.current();
+
+        credentialERC721NFT memory newNFT = credentialERC721NFT({
+            owner: msg.sender,
+            tokenURI: uri,
+            tokenId: tokenId
+        });
+
         _tokenIdCounter.increment();
         _safeMint(to, tokenId);
         _setTokenURI(tokenId, uri);
+
+        nftCollection.push(newNFT);
     }
 
     function _beforeTokenTransfer(
@@ -51,5 +68,9 @@ contract SPCredentials is ERC721, ERC721URIStorage, Pausable, Ownable {
 
     function changeTokenURI(uint256 tokenId, string memory _tokenURI) public onlyOwner {
         super._setTokenURI(tokenId, _tokenURI);
+    }
+
+    function getNFTCollection() public view returns (credentialERC721NFT[] memory) {
+        return nftCollection;
     }
 }

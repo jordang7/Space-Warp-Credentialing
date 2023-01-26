@@ -33,41 +33,22 @@ module.exports = async ({ deployments }) => {
     const { deploy } = deployments
 
     const priorityFee = await callRpc("eth_maxPriorityFeePerGas")
-    
+
     // Wraps Hardhat's deploy, logging errors to console.
     const deployLogError = async (title, obj) => {
-        let ret;
+        let ret
         try {
-            ret = await deploy(title, obj);
+            ret = await deploy(title, obj)
         } catch (error) {
             console.log(error.toString())
             process.exit(1)
         }
-        return ret;
+        return ret
     }
 
     console.log("Wallet Ethereum Address:", deployer.address)
     const chainId = network.config.chainId
-    const tokenToBeMinted = networkConfig[chainId]["tokenToBeMinted"]
-
-
-    await deployLogError("SimpleCoin", {
-        from: deployer.address,
-        args: [tokenToBeMinted],
-        // maxPriorityFeePerGas to instruct hardhat to use EIP-1559 tx format
-        maxPriorityFeePerGas: priorityFee,
-        log: true,
-    })
-
-    await deployLogError("FilecoinMarketConsumer", {
-        from: deployer.address,
-        args: [],
-        // maxPriorityFeePerGas to instruct hardhat to use EIP-1559 tx format
-        maxPriorityFeePerGas: priorityFee,
-        log: true,
-    })
-
-    await deployLogError("DealRewarder", {
+    await deployLogError("SPCredentials", {
         from: deployer.address,
         args: [],
         // maxPriorityFeePerGas to instruct hardhat to use EIP-1559 tx format
@@ -75,4 +56,3 @@ module.exports = async ({ deployments }) => {
         log: true,
     })
 }
-
