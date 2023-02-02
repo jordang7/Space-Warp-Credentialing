@@ -16,7 +16,14 @@ contract SPCredentials is ERC721, ERC721URIStorage, Pausable, Ownable {
         uint256 tokenId;
     }
 
+    struct registeredMiner {
+        uint256 minerId;
+        address owner;
+    }
+
     credentialERC721NFT[] public nftCollection;
+
+    registeredMiner[] public registeredMinersCollection;
 
     constructor() ERC721("SPCredentials", "SPC") {}
 
@@ -72,5 +79,14 @@ contract SPCredentials is ERC721, ERC721URIStorage, Pausable, Ownable {
 
     function getNFTCollection() public view returns (credentialERC721NFT[] memory) {
         return nftCollection;
+    }
+
+    function registerMinerWithPublickKey(uint256 _minerId, address _owner) public onlyOwner {
+        registeredMiner memory newMiner = registeredMiner({minerId: _minerId, owner: _owner});
+        registeredMinersCollection.push(newMiner);
+    }
+
+    function getRegisteredMiners() public view returns (registeredMiner[] memory) {
+        return registeredMinersCollection;
     }
 }
