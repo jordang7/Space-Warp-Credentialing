@@ -19,9 +19,7 @@ export default async function ipfsUpload(miner) {
     const date = Date.now().toLocaleString()
     let image
     const reputationScore = miner.scores.total
-    console.log(reputationScore)
     if (reputationScore >= 90) {
-        console.log("100")
         const response = await fetch("http://localhost:3000/blue.png")
         image = await response.arrayBuffer()
     } else if (reputationScore >= 80) {
