@@ -83,7 +83,7 @@ app.post("/mintCredential", async (req, res) => {
         )
         const minerArray = await response.json()
         const ourMiner = minerArray.miners[0]
-        console.log("minor", ourMiner)
+        //console.log("minor", ourMiner)
         //const ourMiner = minerArray.miners.filter((c) => c.address == minerId)
         const txn = await mintCredential(ourMiner)
         res.send(txn)

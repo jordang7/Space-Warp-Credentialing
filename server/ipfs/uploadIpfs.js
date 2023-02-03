@@ -14,21 +14,24 @@ const client = ipfsClient({
         authorization: auth,
     },
 })
-console.log("here??")
 
 export default async function ipfsUpload(miner) {
     const date = Date.now().toLocaleString()
     let image
-    if (miner.reputationScore >= 90) {
+    const reputationScore = miner.scores.total
+    console.log(reputationScore)
+    if (reputationScore >= 90) {
+        console.log("100")
         const response = await fetch("http://localhost:3000/blue.png")
         image = await response.arrayBuffer()
-    } else if (miner.reputationScore >= 80) {
+    } else if (reputationScore >= 80) {
         const response = await fetch("http://localhost:3000/green.png")
         image = await response.arrayBuffer()
     } else {
         const response = await fetch("http://localhost:3000/yellow.png")
         image = await response.arrayBuffer()
     }
+    //console.log(image)
     const result = await client.add(image)
     let imagePath = `https://gateway.ipfs.io/ipfs/${result.path}`
     const file = {
