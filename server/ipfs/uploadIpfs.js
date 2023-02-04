@@ -31,7 +31,7 @@ export default async function ipfsUpload(miner) {
     }
     //console.log(image)
     const result = await client.add(image)
-    let imagePath = `https://gateway.ipfs.io/ipfs/${result.path}`
+    let imagePath = `https://nftstorage.link/ipfs/${result.path}`
     const file = {
         path: "/",
         content: JSON.stringify({
