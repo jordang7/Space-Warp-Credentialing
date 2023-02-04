@@ -106,9 +106,9 @@ const DesktopNav = () => {
                     <Popover trigger={'hover'} placement={'bottom-start'}>
                         <PopoverTrigger>
                             <Link
-                                p={2}
+                                p={3}
                                 href={navItem.href ?? '#'}
-                                fontSize={'sm'}
+                                fontSize={'md'}
                                 fontWeight={500}
                                 color={linkColor}
                                 _hover={{
@@ -251,21 +251,17 @@ const NAV_ITEMS: Array<NavItem> = [
         href: "/mint"
     },
     {
+        label: 'Showcase',
+        href: "/showcase"
+    },
+
+    {
         label: 'Pool',
         href: "/pool"
     },
     {
         label: 'Governance',
         href: "/"
-    },
-    {
-        label: 'About Us',
-        children: [
-            {
-                label: 'Our team',
-                href: '/team',
-            },
-        ],
     },
 
 ];

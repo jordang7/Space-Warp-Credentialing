@@ -9,7 +9,7 @@ import {
   setContractEventListeners,
 } from './utils/contracts_helper_functions';
 import { formatNFTCollectionForDisplay } from './utils/image_functions';
-import { MintCredentialCard } from '@/components/MintCredentialCard'
+
 import NavBar from "./Navbar"
 
 export default function Home() {
