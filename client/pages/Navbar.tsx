@@ -76,8 +76,8 @@ export default function WithSubnavigation() {
                         as={'a'}
                         fontSize={'sm'}
                         fontWeight={600}
-                        color={'white'}
-                        bg={'pink.400'}
+                        color={'black'}
+                        bg={'#F2C94C'}
                         href={'/register'}
                         _hover={{
                             bg: 'pink.300',

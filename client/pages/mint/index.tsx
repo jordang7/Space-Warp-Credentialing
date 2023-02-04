@@ -1,4 +1,4 @@
-import { Button, Alert, AlertIcon, Input, AlertTitle, AlertDescription, Link, Flex, Card, CardBody, CardHeader, CardFooter, Text, Spinner } from "@chakra-ui/react";
+import { Button, Alert, AlertIcon, Input, AlertTitle, AlertDescription, Link, Flex, Card, CardBody, CardHeader, CardFooter, Text, Spinner, VStack } from "@chakra-ui/react";
 import { useState } from "react";
 import NavBar from "../Navbar"
 import styles from '@/styles/Home.module.css'
@@ -21,9 +21,7 @@ export default function Index() {
         console.log("Mint transaction", txn)
         setLoading(false);
         setTxn(txn.hash)
-        alert(`Minting Credential with tx`)
     }
-    console.log(loading);
 
     return (
         <>
@@ -32,21 +30,32 @@ export default function Index() {
                 <Flex justifyContent="center" alignItems="center" height="800px">
                     {loading ? <Spinner size="xl" color="white" /> : txn.length ?
                         <>
-                            <Alert status='success'
-                                variant='subtle'
-                                flexDirection='column'
-                                alignItems='center'
-                                justifyContent='center'
-                                textAlign='center'
-                                height='150px'>
-                                <AlertIcon boxSize='40px' mr={0} />
-                                <AlertTitle mt={4} mb={1} fontSize='lg'>
-                                    Successfully created Credential!
-                                </AlertTitle>
-                                <AlertDescription maxWidth='sm'>
-                                    <Link target="_blank" rel="noreferrer" href={`https://fvm.starboard.ventures/transactions/${txn}`}>Explore Txn</Link>
-                                </AlertDescription>
-                            </Alert>
+                            <Card minW='lg' bgColor="#333333">
+                                <VStack>
+                                    <CardBody width="100%"  >
+                                        <Alert status='success'
+                                            flexDirection='column'
+                                            alignItems='center'
+                                            justifyContent='center'
+                                            textAlign='center'
+                                            height='150px'
+                                            variant={"solid"}
+                                        >
+                                            <AlertIcon boxSize='40px' mr={0} />
+                                            <AlertTitle mt={4} mb={1} fontSize='lg'>
+                                                Successfully created Credential!
+                                            </AlertTitle>
+                                            <AlertDescription maxWidth='sm'>
+                                                <Link target="_blank" rel="noreferrer" href={`https://fvm.starboard.ventures/transactions/${txn}`}>Explore Txn</Link>
+                                            </AlertDescription>
+                                        </Alert>
+                                    </CardBody>
+                                    <CardFooter>
+
+                                        <Button bgColor={"#F2C94C"} onClick={() => setTxn('')}>Mint Another Credential</Button>
+                                    </CardFooter>
+                                </VStack>
+                            </Card>
                         </>
                         : <Card minW='lg' bgColor="#333333">
                             <CardHeader>
