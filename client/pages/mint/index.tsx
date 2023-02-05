@@ -2,6 +2,7 @@ import { Button, Alert, AlertIcon, Input, AlertTitle, AlertDescription, Link, Fl
 import { useState } from "react";
 import NavBar from "../Navbar"
 import styles from '@/styles/Home.module.css'
+import Register from "../register/index"
 const URLBASE = process.env.NEXT_PUBLIC_PRODUCTION === "true" ? 'https://incred-backend.herokuapp.com' : 'http://localhost:8080'
 
 export default function Index() {
