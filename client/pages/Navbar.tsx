@@ -76,8 +76,8 @@ export default function WithSubnavigation() {
                         as={'a'}
                         fontSize={'sm'}
                         fontWeight={600}
-                        color={'white'}
-                        bg={'pink.400'}
+                        color={'black'}
+                        bg={'#F2C94C'}
                         href={'/register'}
                         _hover={{
                             bg: 'pink.300',
@@ -106,9 +106,9 @@ const DesktopNav = () => {
                     <Popover trigger={'hover'} placement={'bottom-start'}>
                         <PopoverTrigger>
                             <Link
-                                p={2}
+                                p={3}
                                 href={navItem.href ?? '#'}
-                                fontSize={'sm'}
+                                fontSize={'md'}
                                 fontWeight={500}
                                 color={linkColor}
                                 _hover={{
@@ -250,6 +250,11 @@ const NAV_ITEMS: Array<NavItem> = [
         label: 'Mint Credential',
         href: "/mint"
     },
+    {
+        label: 'Showcase',
+        href: "/showcase"
+    },
+
     {
         label: 'Pool',
         href: "/pool"
