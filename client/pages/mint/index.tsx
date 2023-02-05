@@ -29,18 +29,48 @@ export default function Index() {
             <NavBar />
             <main className={styles.main} >
                 <Flex justifyContent="center" alignItems="center" height="800px">
-                    <Card minW='lg  ' bgColor="#26282C" opacity='0.9'>
-                        <CardHeader>
-                            <Text color="#DDDFE4" fontSize={"35px"}>Mint Credentials
-                            </Text>
-                        </CardHeader>
-                        <CardBody>
-                            <Input placeholder='Enter your MinerId' color="#FFFFFF"onChange={handleChange} value={minerId} />
-                        </CardBody>
-                        <CardFooter>
-                            <Button onClick={handleSubmit} bgColor={"#F2C94C"} width="100%" color='#333333'>Mint Credential</Button>
-                        </CardFooter>
-                    </Card>
+                    {loading ? <Spinner size="xl" color="white" /> : txn.length ?
+                        <>
+                            <Card minW='lg' bgColor="#333333">
+                                <VStack>
+                                    <CardBody width="100%"  >
+                                        <Alert status='success'
+                                            flexDirection='column'
+                                            alignItems='center'
+                                            justifyContent='center'
+                                            textAlign='center'
+                                            height='150px'
+                                            variant={"solid"}
+                                        >
+                                            <AlertIcon boxSize='40px' mr={0} />
+                                            <AlertTitle mt={4} mb={1} fontSize='lg'>
+                                                Successfully created Credential!
+                                            </AlertTitle>
+                                            <AlertDescription maxWidth='sm'>
+                                                <Link target="_blank" rel="noreferrer" href={`https://fvm.starboard.ventures/transactions/${txn}`}>Explore Txn</Link>
+                                            </AlertDescription>
+                                        </Alert>
+                                    </CardBody>
+                                    <CardFooter>
+
+                                        <Button bgColor={"#F2C94C"} onClick={() => setTxn('')}>Mint Another Credential</Button>
+                                    </CardFooter>
+                                </VStack>
+                            </Card>
+                        </>
+                        : <Card minW='lg' bgColor="#333333">
+                            <CardHeader>
+                                <Text color="#DDDFE4" fontSize={"35px"}>Mint Credentials
+                                </Text>
+                            </CardHeader>
+                            <CardBody>
+                                <Input color="white" placeholder='Enter your MinerId' onChange={handleChange} value={minerId} />
+                            </CardBody>
+                            <CardFooter>
+                                <Button onClick={handleSubmit} bgColor={"#F2C94C"} width="100%" >Mint Credential</Button>
+                            </CardFooter>
+                        </Card>}
+
                     {/* <VStack>
                         <Input placeholder='minerId' onChange={handleChange} value={minerId} />
                         <Button onClick={handleSubmit}>Submit</Button>
