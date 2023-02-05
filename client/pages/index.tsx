@@ -11,7 +11,7 @@ import { formatNFTCollectionForDisplay } from '../utils/image_functions';
 
 import NavBar from "./Navbar"
 
-const URLBASE = process.env.NEXT_production ? 'https://incred-backend.herokuapp.com/' : 'http://localhost:8080'
+const URLBASE = process.env.NEXT_PRODUCTION ? 'https://incred-backend.herokuapp.com/' : 'http://localhost:8080'
 
 export default function Home() {
   const [nftCollection, setNftCollection] = useState([]);
