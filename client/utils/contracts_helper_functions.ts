@@ -1,8 +1,8 @@
 declare let window: any
 import { ethers } from "ethers"
-import CredentialsCompiledContract from "../utils/SPCredentials.json"
-import { CHAIN_DATA, INITIAL_WALLET_STATUS } from "../utils/consts"
-import { ChainData } from "../utils/interfaces"
+import CredentialsCompiledContract from "./SPCredentials.json"
+import { CHAIN_DATA, INITIAL_WALLET_STATUS } from "./consts"
+import { ChainData } from "./interfaces"
 
 const contractAddressHyperspace = "0x1c785aCB4c2e577B72d10Aa2A58666CDBabD9Ca7"
 

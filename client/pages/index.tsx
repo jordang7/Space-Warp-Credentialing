@@ -6,8 +6,8 @@ import { Button, Input } from "@chakra-ui/react"
 import { useEffect, useState } from 'react'
 import {
   getContractConnection,
-} from './utils/contracts_helper_functions';
-import { formatNFTCollectionForDisplay } from './utils/image_functions';
+} from '../utils/contracts_helper_functions';
+import { formatNFTCollectionForDisplay } from '../utils/image_functions';
 
 import NavBar from "./Navbar"
 

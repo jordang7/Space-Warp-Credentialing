@@ -1,4 +1,4 @@
-import { CHAIN_MAPPINGS, INITIAL_WALLET_STATUS } from "../utils/consts"
+import { CHAIN_MAPPINGS, INITIAL_WALLET_STATUS } from "./consts"
 import { Wallet } from "./interfaces"
 
 declare let window: any
