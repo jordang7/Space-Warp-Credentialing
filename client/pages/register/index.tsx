@@ -5,7 +5,8 @@ import styles from '@/styles/Home.module.css'
 import { Button, Flex, Input, VStack } from "@chakra-ui/react"
 import { useEffect, useState } from 'react'
 import NavBar from "../Navbar"
-
+const URLBASE = process.env.NEXT_PRODUCTION ? 'https://incred-backend.herokuapp.com/' : 'http://localhost:8080'
+console.log(URLBASE)
 export default function Index() {
     const [minerId, setMinerId] = useState<string>('')
     const [address, setAddress] = useState<string>('')
@@ -18,7 +19,7 @@ export default function Index() {
 
     const handleSubmit = async (e: any) => {
         console.log(minerId)
-        const response = await fetch("http://localhost:8080/registerMiner", { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ minerId: minerId, address: address }) })
+        const response = await fetch(`${URLBASE}/registerMiner`, { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ minerId: minerId, address: address }) })
         const txn = await response.json()
         console.log("RegisterMiner", txn)
 

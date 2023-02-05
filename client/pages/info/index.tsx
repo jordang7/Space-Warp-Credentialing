@@ -2,6 +2,7 @@ import { Button, Center, Input, VStack, HStack, Flex, Card, CardBody, CardHeader
 import { useState } from "react";
 import NavBar from "../Navbar"
 import styles from '@/styles/Home.module.css'
+const URLBASE = process.env.NEXT_production ? 'https://incred-backend.herokuapp.com/' : 'http://localhost:8080'
 
 export default function Index() {
     const [nftCollection, setNftCollection] = useState([]);
@@ -13,7 +14,7 @@ export default function Index() {
 
     const handleSubmit = async (e: any) => {
         console.log(minerId)
-        const response = await fetch("http://localhost:8080/mintCredential", { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ minerId: minerId }) })
+        const response = await fetch(`${URLBASE}/mintCredential`, { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ minerId: minerId }) })
         const txn = await response.json()
         console.log("Mint transaction", txn)
 

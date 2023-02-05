@@ -11,6 +11,8 @@ import { formatNFTCollectionForDisplay } from '../utils/image_functions';
 
 import NavBar from "./Navbar"
 
+const URLBASE = process.env.NEXT_production ? 'https://incred-backend.herokuapp.com/' : 'http://localhost:8080'
+
 export default function Home() {
   const [nftCollection, setNftCollection] = useState([]);
   const [minerId, setMinerId] = useState<string>('')
@@ -57,7 +59,7 @@ export default function Home() {
 
   const handleSubmit = async (e: any) => {
     console.log(minerId)
-    const response = await fetch("http://localhost:8080/mintCredential", { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ minerId: minerId }) })
+    const response = await fetch(`${URLBASE}/mintCredential`, { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ minerId: minerId }) })
     const txn = await response.json()
     console.log("Mint transaction", txn)
 
