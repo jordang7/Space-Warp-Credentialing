@@ -9,7 +9,7 @@ import fetch from "node-fetch"
 import ipfsUpload from "./ipfs/uploadIpfs.js"
 import ethers from "ethers"
 import request from "request"
-const CredentialAddress = "0x966382cC79D6438F5Fd8459c9FFdc8410F4Cb9a0"
+const CredentialAddress = "0x1c785aCB4c2e577B72d10Aa2A58666CDBabD9Ca7"
 var url = "https://api.hyperspace.node.glif.io/rpc/v1/"
 const provider = new ethers.providers.JsonRpcProvider(url)
 const app = express()

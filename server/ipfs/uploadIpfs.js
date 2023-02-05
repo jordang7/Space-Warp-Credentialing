@@ -16,7 +16,8 @@ const client = ipfsClient({
 })
 
 export default async function ipfsUpload(miner) {
-    const date = Date.now().toLocaleString()
+    const today = new Date(Date.now())
+    const date = today.toUTCString()
     let image
     const reputationScore = miner.scores.total
     if (reputationScore >= 90) {

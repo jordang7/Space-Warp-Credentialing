@@ -4,7 +4,7 @@ import CredentialsCompiledContract from "../utils/SPCredentials.json"
 import { CHAIN_DATA, INITIAL_WALLET_STATUS } from "../utils/consts"
 import { ChainData } from "../utils/interfaces"
 
-const contractAddressHyperspace = "0x966382cC79D6438F5Fd8459c9FFdc8410F4Cb9a0"
+const contractAddressHyperspace = "0x1c785aCB4c2e577B72d10Aa2A58666CDBabD9Ca7"
 
 //Destructure for other chain additions
 //TODO: Fix me. both return the same thing
