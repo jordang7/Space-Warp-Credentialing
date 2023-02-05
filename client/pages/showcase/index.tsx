@@ -4,7 +4,6 @@ import styles from '@/styles/Home.module.css'
 import { useEffect, useState } from 'react'
 import {
     getContractConnection,
-    setContractEventListeners,
 } from '../utils/contracts_helper_functions';
 import { formatNFTCollectionForDisplay } from '../utils/image_functions';
 
