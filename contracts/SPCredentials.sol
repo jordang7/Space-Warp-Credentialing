@@ -14,10 +14,11 @@ contract SPCredentials is ERC721, ERC721URIStorage, Pausable, Ownable {
         address owner;
         string tokenURI;
         uint256 tokenId;
+        string minerId;
     }
 
     struct registeredMiner {
-        uint256 minerId;
+        string minerId;
         address owner;
     }
 
@@ -35,13 +36,14 @@ contract SPCredentials is ERC721, ERC721URIStorage, Pausable, Ownable {
         _unpause();
     }
 
-    function safeMint(address to, string memory uri) public onlyOwner {
+    function safeMint(address to, string memory  _minerId, string memory uri) public onlyOwner {
         uint256 tokenId = _tokenIdCounter.current();
 
         credentialERC721NFT memory newNFT = credentialERC721NFT({
             owner: msg.sender,
             tokenURI: uri,
-            tokenId: tokenId
+            tokenId: tokenId,
+            minerId:_minerId
         });
 
         _tokenIdCounter.increment();
@@ -49,6 +51,7 @@ contract SPCredentials is ERC721, ERC721URIStorage, Pausable, Ownable {
         _setTokenURI(tokenId, uri);
 
         nftCollection.push(newNFT);
+        registerMinerWithPublickKey(_minerId, to);
     }
 
     function _beforeTokenTransfer(
@@ -81,7 +84,7 @@ contract SPCredentials is ERC721, ERC721URIStorage, Pausable, Ownable {
         return nftCollection;
     }
 
-    function registerMinerWithPublickKey(uint256 _minerId, address _owner) public onlyOwner {
+    function registerMinerWithPublickKey(string memory _minerId, address _owner) public onlyOwner {
         registeredMiner memory newMiner = registeredMiner({minerId: _minerId, owner: _owner});
         registeredMinersCollection.push(newMiner);
     }
