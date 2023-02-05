@@ -2,7 +2,7 @@ import { Button, Center, Input, VStack, HStack, Flex, Card, CardBody, CardHeader
 import { useState } from "react";
 import NavBar from "../Navbar"
 import styles from '@/styles/Home.module.css'
-const URLBASE = process.env.NEXT_PRODUCTION === "true" ? 'https://incred-backend.herokuapp.com/' : 'http://localhost:8080'
+const URLBASE = process.env.NEXT_PUBLIC_PRODUCTION === "true" ? 'https://incred-backend.herokuapp.com/' : 'http://localhost:8080'
 
 export default function Index() {
     const [nftCollection, setNftCollection] = useState([]);
