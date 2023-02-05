@@ -4,10 +4,6 @@ import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
 import { Button, Flex, Input, VStack } from "@chakra-ui/react"
 import { useEffect, useState } from 'react'
-import {
-    getContractConnection,
-    setContractEventListeners,
-} from '../utils/contracts_helper_functions';
 import NavBar from "../Navbar"
 
 export default function Index() {
