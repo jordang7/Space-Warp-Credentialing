@@ -30,7 +30,7 @@ export default function WithSubnavigation() {
     return (
         <Box>
             <Flex
-                bg={useColorModeValue('black', 'gray.800')}
+                bg={useColorModeValue('#1A1E24', 'gray.800')}
                 color={useColorModeValue('white', 'white')}
                 minH={'60px'}
                 py={{ base: 2 }}
@@ -178,7 +178,7 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
 const MobileNav = () => {
     return (
         <Stack
-            bg={useColorModeValue('white', 'gray.800')}
+            bg={useColorModeValue('#1A1E24', 'gray.800')}
             p={4}
             display={{ md: 'none' }}>
             {NAV_ITEMS.map((navItem) => (
@@ -264,13 +264,8 @@ const NAV_ITEMS: Array<NavItem> = [
         href: "/"
     },
     {
-        label: 'About Us',
-        children: [
-            {
-                label: 'Our team',
-                href: '/team',
-            },
-        ],
+        label: 'Info',
+        href:"/info"
     },
 
 ];
