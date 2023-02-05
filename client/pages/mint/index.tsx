@@ -8,17 +8,21 @@ const URLBASE = process.env.NEXT_PUBLIC_PRODUCTION === "true" ? 'https://incred-
 export default function Index() {
     const [nftCollection, setNftCollection] = useState([]);
     const [minerId, setMinerId] = useState<string>('')
+    const [pubKey, setPubKey] = useState<string>('')
     const [loading, setLoading] = useState<boolean>(false)
     const [txn, setTxn] = useState<string>('')
 
-    const handleChange = async (e: any) => {
-        setMinerId(e.target.value);
+    const handleIdChange = async (e: any) => {
+        setMinerId(e.target.value); 
+    }
+    const handleKeyChange = async (e: any) => {
+        setPubKey(e.target.value); 
     }
 
     const handleSubmit = async (e: any) => {
         console.log(minerId)
         setLoading(true)
-        const response = await fetch(`${URLBASE}/mintCredential`, { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ minerId: minerId }) })
+        const response = await fetch(`${URLBASE}/mintCredential`, { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ minerId: minerId ,pubKey:pubKey}) })
         const txn = await response.json()
         console.log("Mint transaction", txn)
         setLoading(false);
@@ -65,7 +69,10 @@ export default function Index() {
                                 </Text>
                             </CardHeader>
                             <CardBody>
-                                <Input color="white" placeholder='Enter your MinerId' onChange={handleChange} value={minerId} />
+                            <VStack color="white">
+                                <Input color="white" placeholder='Enter your MinerId' onChange={handleIdChange} value={minerId} />
+                                <Input color="white" placeholder='Enter your Address' onChange={handleKeyChange} value={pubKey} />
+                            </VStack>
                             </CardBody>
                             <CardFooter>
                                 <Button onClick={handleSubmit} bgColor={"#F2C94C"} width="100%" >Mint Credential</Button>
