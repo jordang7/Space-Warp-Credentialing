@@ -5,7 +5,7 @@ import styles from '@/styles/Home.module.css'
 import { Button, Flex, Input, VStack } from "@chakra-ui/react"
 import { useEffect, useState } from 'react'
 import NavBar from "../Navbar"
-const URLBASE = process.env.NEXT_PRODUCTION ? 'https://incred-backend.herokuapp.com/' : 'http://localhost:8080'
+const URLBASE = process.env.NEXT_PRODUCTION === "true" ? 'https://incred-backend.herokuapp.com/' : 'http://localhost:8080'
 console.log(URLBASE)
 export default function Index() {
     const [minerId, setMinerId] = useState<string>('')
