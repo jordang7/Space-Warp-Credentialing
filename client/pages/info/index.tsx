@@ -24,16 +24,16 @@ export default function Index() {
             <NavBar />
             <main className={styles.main} >
                 <Flex justifyContent="center" alignItems="center" height="800px">
-                    <Card minW='lg  ' bgColor="#26282C" opacity='0.9'>
+                    <Card minW='lg  ' bgColor="#333333">
                         <CardHeader>
                             <Text color="#DDDFE4" fontSize={"35px"}>Mint Credentials
                             </Text>
                         </CardHeader>
                         <CardBody>
-                            <Input placeholder='Enter your MinerId' color="#FFFFFF"onChange={handleChange} value={minerId} />
+                            <Input placeholder='Enter your MinerId' onChange={handleChange} value={minerId} />
                         </CardBody>
                         <CardFooter>
-                            <Button onClick={handleSubmit} bgColor={"#F2C94C"} width="100%" color='#333333'>Mint Credential</Button>
+                            <Button onClick={handleSubmit} bgColor={"#F2C94C"} width="100%" >Mint Credential</Button>
                         </CardFooter>
 
                     </Card>
