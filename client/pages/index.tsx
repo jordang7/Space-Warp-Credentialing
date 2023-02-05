@@ -81,7 +81,7 @@ export default function Home() {
             </Card>
           </Box>
           <Spacer />
-          <Box p={4} width="60%" >
+          <Box p={4} width="50%" >
             <Card bg='#1E1E1E' >
               <CardHeader width="100%">
                 <Heading textAlign="center" size='lg' color="white">Roadmap</Heading>
