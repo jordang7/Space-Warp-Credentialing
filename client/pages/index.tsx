@@ -1,8 +1,6 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
-import { Button, Input } from "@chakra-ui/react"
+import { Box, Text, Card, CardBody, CardHeader, Grid, GridItem, Heading, Image, Stack, StackDivider, Divider, Center, Flex, Spacer, SimpleGrid } from "@chakra-ui/react"
 import { useEffect, useState } from 'react'
 import {
   getContractConnection,
@@ -14,62 +12,90 @@ import NavBar from "./Navbar"
 const URLBASE = process.env.NEXT_PUBLIC_PRODUCTION === "true" ? 'https://incred-backend.herokuapp.com' : 'http://localhost:8080'
 
 export default function Home() {
-  const [nftCollection, setNftCollection] = useState([]);
-  const [minerId, setMinerId] = useState<string>('')
-  const [imageLinks, setImageLinks] = useState([]);
-  const [status, setStatus] = useState({
-    loading: '',
-    error: '',
-    success: '',
-    warning: '',
-  });
-  //INITIALISATION
-  useEffect(() => {
-    getDisplayData(); //should work with read only mode
-  }, []);
 
-  useEffect(() => {
-    if (nftCollection && nftCollection[0]) {
-      console.log('nftcollection', nftCollection);
-      formatNFTCollectionForDisplay(nftCollection, setImageLinks);
-    }
-  }, [nftCollection]);
-
-  const getDisplayData = async () => {
-    console.log('Fetching nft data from contract...');
-    const contract: any = await getContractConnection('read');
-    await contract
-      .getNFTCollection()
-      .then(async (nftCollection: any) => {
-        console.log('NFT collection', nftCollection);
-        setNftCollection(nftCollection);
-      })
-      .catch((err: any) => {
-        console.log('NFT fetching err', err);
-        setStatus((prevState) => ({
-          ...prevState,
-          error: (err.message, 'Could not fetch nft collection'),
-        }));
-      });
-  };
-
-  const handleChange = async (e: any) => {
-    setMinerId(e.target.value);
-  }
-
-  const handleSubmit = async (e: any) => {
-    console.log(minerId)
-    const response = await fetch(`${URLBASE}/mintCredential`, { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ minerId: minerId }) })
-    const txn = await response.json()
-    console.log("Mint transaction", txn)
-
-    alert(`Minting Credential with tx`)
-  }
   return (
     <>
       <NavBar />
       <main className={styles.main} >
-        HOMEPAGE
+        <Flex>
+          <Box p={4} width="50%">
+            <Card bg='#1E1E1E' >
+              <CardHeader width="100%">
+                <Heading textAlign="center" size='lg' color="white">Credentialing as a Service</Heading>
+              </CardHeader>
+              <Center>
+                <Divider color="white" width="50%" />
+              </Center>
+              <CardBody>
+                <Stack divider={<StackDivider borderColor='#1E1E1E' />} spacing='4'>
+                  <Box height={"200px"}>
+                    <Grid templateColumns='repeat(5, 1fr)' >
+                      <GridItem w='100%' colSpan={3} height={'200px'} >
+                        <Center h='200px'>
+                          <Text color={"white"} textAlign={"center"} >
+                            Credentialed Storage Providers benefit from access our lending platform - offering  new possibilities for growth and financial stability.
+                          </Text>
+                        </Center>
+                      </GridItem>
+                      <GridItem colStart={4} w='100%' height={'200px'} ml="70px" >
+                        <Center h='200px'>
+                          <Image src="/landing1.png" alt={'1'} maxH={"200px"} />
+                        </Center>
+                      </GridItem>
+                    </Grid>
+                  </Box>
+                  <Box height={"200px"}>
+                    <Grid templateColumns='repeat(5, 1fr)' >
+                      <GridItem w='100%' colStart={1} colSpan={2} height={'200px'} >
+                        <Center h='200px'>
+                          <Image src="/landing3.png" alt={'2'} maxH={"200px"} />
+                        </Center>
+                      </GridItem>
+                      <GridItem w='100%' colStart={3} colSpan={3} height={'200px'} >
+                        <Center h='200px'>
+                          <Text color={"white"} textAlign={"center"} >
+                            Credentialed Storage Providers benefit from access our lending platform - offering  new possibilities for growth and financial stability.
+                          </Text>
+                        </Center>
+                      </GridItem>
+                    </Grid>
+                  </Box>
+                  <Box height={"200px"}>
+                    <Grid templateColumns='repeat(5, 1fr)' >
+                      <GridItem w='100%' colSpan={3} height={'200px'} >
+                        <Center h='200px'>
+                          <Text color={"white"} textAlign={"center"} >
+                            Credentialed Storage Providers benefit from access our lending platform - offering  new possibilities for growth and financial stability.
+                          </Text>
+                        </Center>
+                      </GridItem>
+                      <GridItem colStart={4} w='100%' height={'200px'} ml="70px" >
+                        <Center h='200px'>
+                          <Image src="/landing2.png" alt={'3'} maxH={"200px"} />
+                        </Center>
+                      </GridItem>
+                    </Grid>
+                  </Box>
+                </Stack>
+              </CardBody>
+            </Card>
+          </Box>
+          <Spacer />
+          <Box p={4} width="60%" >
+            <Card bg='#1E1E1E' >
+              <CardHeader width="100%">
+                <Heading textAlign="center" size='lg' color="white">Roadmap</Heading>
+              </CardHeader>
+
+              <CardBody>
+                <Center>
+
+                  <Image src="/roadmap.png" alt={'roadmap'} minH={"500px"} maxH={"665px"} />
+                </Center>
+              </CardBody>
+            </Card>
+          </Box>
+        </Flex>
       </main>
     </>
   )
