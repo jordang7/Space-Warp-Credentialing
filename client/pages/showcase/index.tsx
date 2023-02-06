@@ -52,7 +52,10 @@ export default function Index() {
             <NavBar />
             <main className={styles.main} >
                 <Center>
-                    <Heading color="white" py={"30px"}> Credentialed Storage Providers</Heading>
+                    <Box bg='#1E1E1E' px="4" borderRadius={"15px"} mt="20px" >
+                        <Heading color="gray.500" p="10px" > Credentialed Storage Providers</Heading>
+                    </Box>
+
                 </Center>
                 <SimpleGrid minChildWidth='345px' spacing='40px' p={4} >
                     {imageLinks.map((cred: any) => {
