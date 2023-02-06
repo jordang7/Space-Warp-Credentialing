@@ -61,19 +61,19 @@ export default function Index() {
                     {imageLinks.map((cred: any) => {
                         return <Card key={cred.attributes.minerId} maxWidth={"600px"} maxHeight={"600px"} bg='#1E1E1E' color="gray.500"  >
                             <CardHeader>
-                                <Heading size='md'>{cred.name}</Heading>
+                                <Heading size='lg' textTransform='uppercase'>{cred.name}</Heading>
                             </CardHeader>
                             <Center>
                                 <Divider width={"90%"} />
                             </Center>
                             <CardBody>
                                 <Grid templateColumns='repeat(5, 1fr)' >
-                                    <GridItem w='100%' colStart={1} colSpan={2} height={'200px'} >
-                                        <Center h='200px'>
-                                            <Image src={cred.image} alt="badge" maxHeight={"170px"} />
+                                    <GridItem w='100%' colStart={1} colSpan={2}  >
+                                        <Center>
+                                            <Image src={cred.image} alt="badge" maxHeight={"120px"} />
                                         </Center>
                                     </GridItem>
-                                    <GridItem w='100%' colStart={3} colSpan={3} height={'200px'} >
+                                    <GridItem w='100%' colStart={3} colSpan={3}  >
                                         <Flex>
                                             <Box px='4' py="2">
                                                 <Heading size='md' textTransform='uppercase' textAlign={"left"}>
@@ -81,10 +81,10 @@ export default function Index() {
                                                 </Heading>
                                             </Box>
                                             <Spacer />
-                                            <Box py="2">
-                                                <Text fontSize='xl' textAlign={"right"}>
+                                            <Box >
+                                                <Heading size="lg" textAlign={"right"}>
                                                     {cred.attributes.reputationScore}
-                                                </Text>
+                                                </Heading>
                                             </Box>
                                         </Flex>
                                         <Flex>
@@ -94,14 +94,14 @@ export default function Index() {
                                                 </Heading>
                                             </Box>
                                             <Spacer />
-                                            <Box py="2">
+                                            <Box >
                                                 <Text fontSize='md' textAlign={"right"} py="2">
                                                     {cred.attributes.minerId}
                                                 </Text>
                                             </Box>
                                         </Flex>
                                         <Flex>
-                                            <Box px='4' >
+                                            <Box px='4' py="2">
                                                 <Heading size='md' textTransform='uppercase' textAlign={"left"}>
                                                     Region
                                                 </Heading>
@@ -116,7 +116,7 @@ export default function Index() {
                                     </GridItem>
                                 </Grid>
                                 <Center>
-                                    <Divider />
+                                    <Divider p="3" />
                                 </Center>
                                 <Flex>
                                     <Center>
